@@ -10,7 +10,7 @@ export const DayBackground = () => {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const rotation = scrollY * 0.01; // control sensitivity
+      const rotation = scrollY * 0.002; // control sensitivity
 
       gsap.to(containerRef.current, {
         rotation: rotation,

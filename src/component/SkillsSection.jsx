@@ -14,7 +14,8 @@ import {
   SiGitlab,
   SiPostman,
   SiVercel,
-  SiNetlify
+  SiNetlify,
+  
 } from "react-icons/si";
 
 const skills = [
@@ -28,6 +29,7 @@ const skills = [
   { name: "React Bootstrap", icon: SiBootstrap, category: "frontend" },
   { name: "Material UI", icon: null, category: "frontend" },
   { name: "Tailwind CSS", icon: SiTailwindcss, category: "frontend" },
+  { name: "GSAP", icon: null, category: "frontend" },
 
   // Tools
   { name: "Git", icon: SiGit, category: "tools" },

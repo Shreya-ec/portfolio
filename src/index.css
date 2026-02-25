@@ -191,7 +191,7 @@
 
 .light-source {
   @apply absolute rounded-full;
-  top: -10%;
+  top: 0%;
   right: 10%;
   width: 250px;
   height: 250px;
@@ -206,13 +206,12 @@
   );
   filter: blur(15px);
   pointer-events: none;
-  animation: light-source-pulse 6s ease-in-out infinite;
 }
 
 .light-ray {
   position: absolute;
-  top: -10%;
-  right: 10%;
+  top: 0%;
+  right: 4%;
 
   transform-origin: top right;
 
@@ -229,16 +228,6 @@
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
 }
 
-@keyframes light-source-pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0;
-    transform: scale(1.1);
-  }
-}
 
 @keyframes ray-pulse-short {
   0%, 100% {
