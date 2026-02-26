@@ -154,7 +154,7 @@ export const SkillsSection = () => {
           ref={titleRef}
           className="text-3xl md:text-4xl font-bold mb-12 text-center"
         >
-          My <span className="text-primary">Tech Stack</span>
+          My <span className="text-primary heading">Tech Stack</span>
         </h2>
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">

@@ -65,6 +65,9 @@
 
 @layer base {
   :root {
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
     --background: 0 0% 98%;
     --foreground: 222 47% 11%;
 
@@ -74,6 +77,14 @@
     --primary-foreground: 210 40% 98%;
 
     --border: 214 32% 91%;
+  }
+
+  h1, h2, h3, h4, .heading, em {
+    font-family: var(--font-heading);
+  }
+
+  p, span, a, button, input, textarea {
+    font-family: var(--font-body);
   }
 
   .dark {
