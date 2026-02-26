@@ -11,40 +11,42 @@ import {
   SiGit,
   SiGithub,
   SiFigma,
-  SiGitlab,
   SiPostman,
   SiVercel,
   SiNetlify,
+  SiMui,
+  SiRedux,
+  SiVite,
   
 } from "react-icons/si";
 
 const skills = [
-  // Frontend
-  { name: "HTML", icon: SiHtml5, category: "frontend" },
-  { name: "CSS", icon: SiCss3, category: "frontend" },
-  { name: "JavaScript", icon: SiJavascript, category: "frontend" },
-  { name: "React", icon: SiReact, category: "frontend" },
-  { name: "React Native", icon: SiReact, category: "frontend" },
-  { name: "Bootstrap", icon: SiBootstrap, category: "frontend" },
-  { name: "React Bootstrap", icon: SiBootstrap, category: "frontend" },
-  { name: "Material UI", icon: null, category: "frontend" },
-  { name: "Tailwind CSS", icon: SiTailwindcss, category: "frontend" },
-  { name: "GSAP", icon: null, category: "frontend" },
+  // Core Frontend
+  { name: "HTML", icon: SiHtml5, category: "core" },
+  { name: "CSS", icon: SiCss3, category: "core" },
+  { name: "JavaScript", icon: SiJavascript, category: "core" },
+  { name: "React", icon: SiReact, category: "core" },
+  { name: "Redux Toolkit", icon: SiRedux, category: "core" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, category: "core" },
+  { name: "GSAP", icon: null, category: "core" },
 
-  // Tools
+  // Engineering & Workflow
   { name: "Git", icon: SiGit, category: "tools" },
   { name: "GitHub", icon: SiGithub, category: "tools" },
-  { name: "GitLab", icon: SiGitlab, category: "tools" },
-  { name: "Postman", icon: SiPostman, category: "tools" },
-  { name: "Figma", icon: SiFigma, category: "tools" },
-  { name: "ChatGPT", icon: null, category: "tools" },
-  { name: "VS Code", icon: null, category: "tools" },
-  { name: "Cursor", icon: null, category: "tools" },
-  { name: "Vercel", icon: SiVercel, category: "hosting" },
-  { name: "Netlify", icon: SiNetlify, category: "hosting" },
+  { name: "Vite", icon: SiVite, category: "tools" },
+  { name: "Vercel", icon: SiVercel, category: "tools" },
+  { name: "Netlify", icon: SiNetlify, category: "tools" },
+
+  // Familiar / Worked With
+  { name: "React Native", icon: SiReact, category: "familiar" },
+  { name: "Material UI", icon: SiMui, category: "familiar" },
+  { name: "Bootstrap", icon: SiBootstrap, category: "familiar" },
+  { name: "Postman", icon: SiPostman, category: "familiar" },
+  { name: "Figma", icon: SiFigma, category: "familiar" },
+
 ];
 
-const categories = ["all", "frontend", "tools", "hosting"];
+const categories = ["all", "core", "familiar", "tools"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");

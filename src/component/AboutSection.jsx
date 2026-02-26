@@ -112,7 +112,7 @@ export const AboutSection = () => {
       <div className="container mx-auto max-w-6xl">
         <h2 
           ref={titleRef}
-          className="text-4xl md:text-5xl font-bold mb-16 text-center"
+          className="text-3xl md:text-4xl font-bold mb-16 text-center"
         >
           About <span className="text-primary">Me</span>
         </h2>
@@ -122,7 +122,7 @@ export const AboutSection = () => {
           <div ref={contentRef} className="space-y-6">
             <div className="space-y-5">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                With about <span className="text-primary font-semibold">3 years</span> of experience in web development, I specialize
+                With about <span className="text-primary font-semibold">2+ years</span> of experience in web development, I specialize
                 in creating responsive, accessible, and performant web
                 applications using modern technologies.
               </p>

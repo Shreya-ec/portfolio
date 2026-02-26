@@ -21,7 +21,6 @@ export const ContactSection = () => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
-  const imageRef = useRef(null);
   const socialRef = useRef(null);
   const formRef = useRef(null);
   const formTitleRef = useRef(null);
@@ -70,13 +69,6 @@ export const ContactSection = () => {
               descriptionRef.current,
               { opacity: 0, y: 20 },
               { opacity: 1, y: 0, duration: 0.6, delay: 0.2, ease: "power2.out" }
-            );
-
-            // Animate image
-            gsap.fromTo(
-              imageRef.current,
-              { opacity: 0, scale: 0.9, x: -30 },
-              { opacity: 1, scale: 1, x: 0, duration: 0.8, delay: 0.4, ease: "back.out(1.7)" }
             );
 
             // Animate social links
@@ -148,7 +140,7 @@ export const ContactSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="contact" className="py-20 px-4 relative bg-secondary/30">
+    <section ref={sectionRef} id="contact" className="py-22 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <h2 
           ref={titleRef}
@@ -158,24 +150,35 @@ export const ContactSection = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Left: headline, sentence, email, socials */}
           <div className="space-y-6">
             <p 
               ref={descriptionRef}
-              className="text-center text-muted-foreground max-w-2xl mx-auto"
+              className="text-center md:text-left text-muted-foreground max-w-xl mx-auto md:mx-0 text-lg leading-relaxed"
             >
-              Have a project in mind or want to collaborate? Feel free to reach out.
-              I'm always open to discussing new opportunities.
+              I’d love to hear about your ideas, projects, or challenges and explore how we can build something impactful together.
             </p>
+            <div className="bg-card p-6 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-start">
+              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">
+                Email
+              </p>
+              <a
+                href="mailto:ecshreyasaraswat@gmail.com"
+                className="inline-flex items-center justify-center text-lg md:text-xl font-semibold text-primary underline-offset-4 hover:underline"
+              >
+                ecshreyasaraswat@gmail.com
+              </a>
+            </div>
           
-            <div className="text-center">
-              <h4 className="font-medium mb-4">Connect With Me</h4>
+            <div className="text-center opacity-0 animate-fade-in-delay-2 mt-15">
+              <h4 className="font-medium mb-2">Connect With Me</h4>
               <div 
                 ref={socialRef}
-                className="flex space-x-4 justify-center"
+                className="flex justify-center gap-6"
               >
                 <div 
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
-                           hover:bg-primary/20 hover:scale-110 cursor-pointer group"
+                           hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
                     gsap.to(e.currentTarget, {
                       rotation: 360,
@@ -197,7 +200,7 @@ export const ContactSection = () => {
                 </div>
                 <div 
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
-                           hover:bg-primary/20 hover:scale-110 cursor-pointer group"
+                           hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
                     gsap.to(e.currentTarget, {
                       rotation: 360,
@@ -219,7 +222,7 @@ export const ContactSection = () => {
                 </div>
                 <div 
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
-                           hover:bg-primary/20 hover:scale-110 cursor-pointer group"
+                           hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
                     gsap.to(e.currentTarget, {
                       rotation: 360,
@@ -243,18 +246,19 @@ export const ContactSection = () => {
             </div>
           </div>
 
+          {/* Right: compact form card */}
           <div
             ref={formRef}
-            className="bg-card p-8 rounded-lg shadow-xs"
+            className="bg-card p-6 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <h3 
               ref={formTitleRef}
-              className="text-2xl font-semibold mb-10"
+              className="text-2xl font-semibold mb-6"
             >
               Send a Message
             </h3>
 
-            <form className="space-y-6 gap-10" onSubmit={handleSubmit}>
+            <form className="space-y-6 gap-6" onSubmit={handleSubmit}>
               <div 
                 ref={(el) => (formFieldsRef.current[0] = el)}
                 className="text-start"
@@ -339,7 +343,7 @@ export const ContactSection = () => {
                   id="message"
                   name="message"
                   required
-                  rows={4}
+                  rows={3}
                   className="w-full px-4 py-3 rounded-md border border-input bg-background 
                            focus:outline-none focus:ring-2 focus:ring-primary resize-none transition-all duration-300"
                   placeholder="Hello, I'd like to talk about..."
@@ -365,7 +369,7 @@ export const ContactSection = () => {
                 type="submit"
                 disabled={isSubmitting}
                 className={cn(
-                  "cosmic-button w-full flex items-center justify-center gap-2 mt-14"
+                  "cosmic-button w-full flex items-center justify-center gap-2 mt-7"
                 )}
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, {

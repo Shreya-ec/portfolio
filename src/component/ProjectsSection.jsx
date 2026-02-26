@@ -8,18 +8,18 @@ import project3 from "../assets/project3.png";
 const projects = [
   {
     id: 1,
-    title: "Employee Management Dashboard",
-    description: "Employee Management Dashboard built with React, featuring authentication, CRUD, search, filters, and print functionality.",
+    title: "Admin Dashboard",
+    description: "An employee management system with authentication, advanced filtering, search optimization, and print-ready reporting.",
     image: project1,
     tags: ["React", "javaScript", "TailwindCSS"],
-    demoUrl: "#",
+    demoUrl: "https://employee-management-dashboard-snowy.vercel.app/",
     githubUrl: "https://github.com/Shreya-ec/employee-management-dashboard",
   },
   {
     id: 2,
-    title: "React Chatflo",
+    title: "React Chatflow",
     description:
-      "A visual chatbot-flow editor using React Flow for drag-and-drop conversation creation.",
+      "A visual chatbot-flow editor for creating and editing chatbot flows.",
     image: project2,
     tags: ["React", "React Flow", "javaScript"],
     demoUrl: "https://reactchatflo.netlify.app",

@@ -106,7 +106,7 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            A creative frontend developer building intuitive, responsive, and impactful web experiences with React and beyond.
+          I build high-performance React applications with production-grade UI and <br/> thoughtful motion.
           </p>
           <em className="block my-2 text-lg md:text-xl text-gray-500 max-2-2xl mx-auto opacity-0 animate-fade-in-delay-4">- "Build it fast. Make it smart. Keep it beautiful."</em>
 
