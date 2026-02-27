@@ -19,6 +19,7 @@ import {
   SiVite,
   
 } from "react-icons/si";
+import { IoMdCodeWorking } from "react-icons/io";
 
 const skills = [
   // Core Frontend
@@ -28,7 +29,7 @@ const skills = [
   { name: "React", icon: SiReact, category: "core" },
   { name: "Redux Toolkit", icon: SiRedux, category: "core" },
   { name: "Tailwind CSS", icon: SiTailwindcss, category: "core" },
-  { name: "GSAP", icon: null, category: "core" },
+  { name: "GSAP", icon: IoMdCodeWorking, category: "core" },
 
   // Engineering & Workflow
   { name: "Git", icon: SiGit, category: "tools" },

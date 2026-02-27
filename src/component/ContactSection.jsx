@@ -1,23 +1,21 @@
 import {
   Github,
-  Instagram,
   Linkedin,
+  LocateIcon,
   Mail,
+  Map,
   MapPin,
-  Phone,
+  Pin,
   Send,
-  Twitch,
-  Twitter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useToast } from "@/hooks/use-toast";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useForm } from '@formspree/react';
 
 
 export const ContactSection = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -26,31 +24,8 @@ export const ContactSection = () => {
   const formTitleRef = useRef(null);
   const formFieldsRef = useRef([]);
   const submitButtonRef = useRef(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-
-    // Animate button on submit
-    if (submitButtonRef.current) {
-      gsap.to(submitButtonRef.current, {
-        scale: 0.95,
-        duration: 0.1,
-        yoyo: true,
-        repeat: 1,
-        ease: "power2.inOut",
-      });
-    }
-
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
-  };
+  const [state, handleSubmit] = useForm("xbdawkpv");
+  const refreshForm = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,9 +48,12 @@ export const ContactSection = () => {
 
             // Animate social links
             if (socialRef.current) {
-              const socialLinks = socialRef.current.querySelectorAll('a');
+              const links = socialRef.current.querySelectorAll(".social-link");
+              const details = sectionRef.current.querySelectorAll(".mapPin");
+
+              const elements = [...links, ...details];
               gsap.fromTo(
-                socialLinks,
+                elements,
                 { opacity: 0, scale: 0.8, y: 20 },
                 {
                   opacity: 1,
@@ -139,10 +117,25 @@ export const ContactSection = () => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    if (state?.succeeded) {
+      refreshForm.current?.reset();
+      setIsSubmitted(true);
+
+
+      const timer = setTimeout(() => {
+        setIsSubmitted(false);
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
+
+  }, [state?.succeeded]);
+
   return (
     <section ref={sectionRef} id="contact" className="py-22 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <h2 
+        <h2
           ref={titleRef}
           className="text-3xl md:text-4xl font-bold mb-4 text-center"
         >
@@ -151,32 +144,20 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: headline, sentence, email, socials */}
-          <div className="space-y-6">
-            <p 
+          <div className="space-y-20">
+            <p
               ref={descriptionRef}
-              className="text-center md:text-left text-muted-foreground max-w-xl mx-auto md:mx-0 text-lg leading-relaxed"
+              className="text-center text-muted-foreground max-w-xl mx-auto text-lg leading-relaxed mt-10"
             >
               I’d love to hear about your ideas, projects, or challenges and explore how we can build something impactful together.
             </p>
-            <div className="bg-card p-6 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-start">
-              <p className="text-sm uppercase tracking-wide text-muted-foreground mb-1">
-                Email
-              </p>
-              <a
-                href="mailto:ecshreyasaraswat@gmail.com"
-                className="inline-flex items-center justify-center text-lg md:text-xl font-semibold text-primary underline-offset-4 hover:underline"
-              >
-                ecshreyasaraswat@gmail.com
-              </a>
-            </div>
-          
-            <div className="text-center opacity-0 animate-fade-in-delay-2 mt-15">
+            <div className="text-center opacity-0 animate-fade-in-delay-2">
               <h4 className="font-medium mb-2">Connect With Me</h4>
-              <div 
+              <div
                 ref={socialRef}
                 className="flex justify-center gap-6"
               >
-                <div 
+                <div
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
                            hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
@@ -198,7 +179,7 @@ export const ContactSection = () => {
                     <Mail className="group-hover:scale-110 transition-transform" />
                   </a>
                 </div>
-                <div 
+                <div
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
                            hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
@@ -220,7 +201,7 @@ export const ContactSection = () => {
                     <Linkedin className="group-hover:scale-110 transition-transform" />
                   </a>
                 </div>
-                <div 
+                <div
                   className="p-3 rounded-full bg-primary/10 text-primary transition-all duration-300
                            hover:bg-primary/20 hover:scale-110 hover:shadow-[0_0_18px_rgba(124,58,237,0.45)] cursor-pointer group"
                   onMouseEnter={(e) => {
@@ -244,6 +225,59 @@ export const ContactSection = () => {
                 </div>
               </div>
             </div>
+
+            <div className="flex justify-center">
+              <div
+                className="relative flex items-center"
+                onMouseEnter={(e) => {
+                  const wrapper = e.currentTarget;
+                  const text = wrapper.querySelector(".detail");
+
+                  // Make visible first
+                  gsap.set(text, { display: "block" });
+
+                  // Animate in
+                  gsap.fromTo(
+                    text,
+                    { opacity: 0, x: 10 },
+                    { opacity: 1, x: 0, duration: 0.4, ease: "power2.in" }
+                  );
+
+                  gsap.to(wrapper, {
+                    x: -20,
+                    duration: 0.4,
+                    ease: "power2.in",
+                  });
+                }}
+                // onMouseLeave={(e) => {
+                //   const wrapper = e.currentTarget;
+                //   const text = wrapper.querySelector(".detail");
+
+                //   gsap.to(text, {
+                //     opacity: 0,
+                //     x: 10,
+                //     duration: 0.3,
+                //     onComplete: () => {
+                //       gsap.set(text, { display: "none" });
+                //     },
+                //   });
+
+                //   gsap.to(wrapper, {
+                //     x: 0,
+                //     duration: 0.3,
+                //   });
+                // }}
+              >
+                <div className="p-3 rounded-full bg-primary/10 text-primary cursor-pointer mapPin">
+                  <MapPin />
+                </div>
+
+                <p className="detail ml-4 whitespace-nowrap hidden text-muted-foreground text-lg">
+                  Gurugram, India
+                </p>
+              </div>
+            </div>
+
           </div>
 
           {/* Right: compact form card */}
@@ -251,15 +285,15 @@ export const ContactSection = () => {
             ref={formRef}
             className="bg-card p-6 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
-            <h3 
+            <h3
               ref={formTitleRef}
               className="text-2xl font-semibold mb-6"
             >
               Send a Message
             </h3>
 
-            <form className="space-y-6 gap-6" onSubmit={handleSubmit}>
-              <div 
+            <form className="space-y-6 gap-6" onSubmit={handleSubmit} ref={refreshForm}>
+              <div
                 ref={(el) => (formFieldsRef.current[0] = el)}
                 className="text-start"
               >
@@ -276,7 +310,7 @@ export const ContactSection = () => {
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background 
                            focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
-                  placeholder="Shreya Saraswat"
+                  placeholder="Hi..."
                   onFocus={(e) => {
                     gsap.to(e.target, {
                       scale: 1.02,
@@ -294,7 +328,7 @@ export const ContactSection = () => {
                 />
               </div>
 
-              <div 
+              <div
                 ref={(el) => (formFieldsRef.current[1] = el)}
                 className="text-start"
               >
@@ -311,7 +345,7 @@ export const ContactSection = () => {
                   required
                   className="w-full px-4 py-3 rounded-md border border-input bg-background 
                            focus:outline-none focus:ring-2 focus:ring-primary transition-all duration-300"
-                  placeholder="shreya@gmail.com"
+                  placeholder="I reach you at..."
                   onFocus={(e) => {
                     gsap.to(e.target, {
                       scale: 1.02,
@@ -329,7 +363,7 @@ export const ContactSection = () => {
                 />
               </div>
 
-              <div 
+              <div
                 ref={(el) => (formFieldsRef.current[2] = el)}
                 className="text-start"
               >
@@ -367,7 +401,7 @@ export const ContactSection = () => {
               <button
                 ref={submitButtonRef}
                 type="submit"
-                disabled={isSubmitting}
+                disabled={state.submitting}
                 className={cn(
                   "cosmic-button w-full flex items-center justify-center gap-2 mt-7"
                 )}
@@ -386,9 +420,18 @@ export const ContactSection = () => {
                   });
                 }}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} className={isSubmitting ? "animate-spin" : ""} />
+                {state?.submitting ? "Sending..." : "Send Message"}
+
+                <Send size={16} className={state?.submitting ? "animate-spin" : ""} />
               </button>
+              {state?.errors?.map((error) => (
+                <div className=" bg-primary/20 rounded-md border border-primary/20 p-2 text-center">
+                  <p key={error.id} className="text-red-500">
+                    {error.message}
+                  </p>
+                </div>
+              ))}
+              {isSubmitted && <div className=" bg-primary/20 rounded-md border border-primary/20 p-2 text-center"><p className="text-sm text-muted-foreground">Thank you for your message. I'll get back to you soon!</p></div>}
             </form>
           </div>
         </div>

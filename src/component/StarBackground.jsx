@@ -28,13 +28,37 @@ export const StarBackground = () => {
     const newStars = [];
 
     for (let i = 0; i < numberOfStars; i++) {
+      // 0 = far, 1 = mid, 2 = near
+      const layerRandom = Math.random();
+      const layer = layerRandom < 0.45 ? 0 : layerRandom < 0.8 ? 1 : 2;
+
+      // Adjust properties based on depth layer for subtle parallax-like depth
+      const baseSize = Math.random() + 1;
+      const sizeMultiplier = layer === 0 ? 0.7 : layer === 1 ? 1 : 1.5;
+      const size = baseSize * sizeMultiplier;
+
+      const opacity =
+        layer === 0
+          ? Math.random() * 0.35 + 0.2 // far: softer
+          : layer === 1
+          ? Math.random() * 0.4 + 0.35 // mid
+          : Math.random() * 0.3 + 0.6; // near: a bit brighter
+
+      const animationDuration =
+        layer === 0
+          ? Math.random() * 5 + 4 // far: slower
+          : layer === 1
+          ? Math.random() * 4 + 2.5 // mid
+          : Math.random() * 3 + 2; // near: a little faster
+
       newStars.push({
         id: i,
-        size: Math.random() + 1,
+        size,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.5,
-        animationDuration: Math.random() * 4 + 2,
+        opacity,
+        animationDuration,
+        layer,
       });
     }
 
@@ -71,6 +95,19 @@ export const StarBackground = () => {
             left: star.x + "%",
             top: star.y + "%",
             opacity: star.opacity,
+            // Subtle depth-based blur and glow variation
+            filter:
+              star.layer === 0
+                ? "blur(1px)"
+                : star.layer === 1
+                ? "blur(0.5px)"
+                : "none",
+            boxShadow:
+              star.layer === 0
+                ? "0 0 6px 1px rgba(255, 255, 255, 0.25)"
+                : star.layer === 1
+                ? "0 0 10px 2px rgba(255, 255, 255, 0.35)"
+                : "0 0 14px 3px rgba(255, 255, 255, 0.5)",
             animationDuration: star.animationDuration + "s",
           }}
         />
