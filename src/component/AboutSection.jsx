@@ -161,8 +161,8 @@ export const AboutSection = () => {
 
               <a
                 ref={(el) => (buttonsRef.current[1] = el)}
-                href="../../../public/Shreya_Saraswat_Resume_2026.pdf"
-                download={true}
+                href="/Shreya_Saraswat_Resume_2026.pdf"
+                download
                 className="px-6 py-3 rounded-full border border-primary text-primary hover:bg-primary/10 
                          transition-all duration-300 flex items-center justify-center gap-2 group"
                 onMouseEnter={(e) => {
