@@ -118,7 +118,7 @@ export const ProjectsSection = () => {
           crafted with attention to detail, performance, and user experience.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-4 sm:p-3">
           {projects.map((project, key) => (
             <div
               key={key}
@@ -157,7 +157,7 @@ export const ProjectsSection = () => {
                 />
               </div>
 
-              <div className="p-6">
+              <div className="p-6 max-sm:p-3">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
@@ -169,10 +169,10 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-1 max-sm:mb-7 max-sm:text-lg group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-12">
+                <p className="max-sm:hidden text-muted-foreground text-sm mb-12">
                   {project.description}
                 </p>
                 <div className="flex space-x-3 absolute bottom-4 right-4">

@@ -178,7 +178,7 @@ export const SkillsSection = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid max-sm:flex max-sm:flex-wrap max-sm:justify-center max-sm:items-center grid-cols-2 md:grid-cols-3 gap-6">
           {filteredSkills.map((skill, key) => {
             const Icon = skill.icon;
             const Icons = Array.isArray(skill.icon) ? skill.icon : null;
@@ -187,7 +187,7 @@ export const SkillsSection = () => {
               <div
                 key={`${skill.name}-${key}`}
                 ref={(el) => (cardsRef.current[key] = el)}
-                className="bg-card p-6 rounded-lg shadow-xs card-hover flex items-center gap-4 cursor-pointer"
+                className="max-sm:p-0 max-sm:bg-transparent max-sm:border-none max-sm:shadow-none bg-card p-6 rounded-lg shadow-xs card-hover flex items-center gap-4 cursor-pointer"
                 onMouseEnter={(e) => {
                   gsap.to(e.currentTarget, {
                     scale: 1.05,
@@ -232,7 +232,7 @@ export const SkillsSection = () => {
                     <Icon className="h-6 w-6 text-primary" />
                   </div>
                 ) : null}
-                <h3 className="font-semibold text-lg text-center">{skill.name}</h3>
+                <h3 className="max-sm:hidden font-semibold text-lg text-center">{skill.name}</h3>
               </div>
             );
           })}

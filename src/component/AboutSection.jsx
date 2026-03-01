@@ -186,7 +186,7 @@ export const AboutSection = () => {
           </div>
 
           {/* Right Cards */}
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 max-sm:hidden ">
             {expertise.map((item, index) => {
               const Icon = item.icon;
               return (

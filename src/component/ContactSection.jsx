@@ -144,10 +144,10 @@ export const ContactSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: headline, sentence, email, socials */}
-          <div className="space-y-20">
+          <div className="space-y-20 max-sm:space-y-10">
             <p
               ref={descriptionRef}
-              className="text-center text-muted-foreground max-w-xl mx-auto text-lg leading-relaxed mt-10"
+              className="text-center text-muted-foreground max-w-xl mx-auto text-lg leading-relaxed mt-10 max-sm:mt-0"
             >
               I’d love to hear about your ideas, projects, or challenges and explore how we can build something impactful together.
             </p>
@@ -226,7 +226,7 @@ export const ContactSection = () => {
               </div>
             </div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center max-md:hidden">
               <div
                 className="relative flex items-center"
                 onMouseEnter={(e) => {
@@ -283,7 +283,7 @@ export const ContactSection = () => {
           {/* Right: compact form card */}
           <div
             ref={formRef}
-            className="bg-card p-6 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            className="bg-card md:p-6 p-4 rounded-xl shadow-md max-w-md w-full mx-auto md:ml-auto border border-border/60 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
           >
             <h3
               ref={formTitleRef}
