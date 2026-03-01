@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Navbar } from "../component/Navbar";
 import { StarBackground } from "../component/StarBackground";
 import { DayBackground } from "../component/DayBackground";
-import { ThemeToggle } from "../component/ThemeToggle";
 import { HeroSection } from "../component/HeroSection";
 import { AboutSection } from "../component/AboutSection";
 import { SkillsSection } from "../component/SkillsSection";
@@ -28,8 +27,6 @@ export const Home = () => {
 
     return (
         <div className={`min-h-screen text-foreground overflow-x-hidden ${isDarkMode ? 'bg-background' : ''}`}>
-            {/* Theme Toggle */}
-            <ThemeToggle />
             {/* Background Effect */}
            {isDarkMode ? <StarBackground /> : <DayBackground />}
             {/* Navbar */}

@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -70,12 +71,13 @@ export const Navbar = () => {
         isScrolled ? "bg-background/50 backdrop-blur-md shadow-xs" : ""
       )}
     >
+
       <div className="container flex items-center justify-between">
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
-          <span className="relative z-10">
+          <span className="relative z-60">
             <span className="text-glow text-foreground"> Shreya's </span>{" "}
             Portfolio
           </span>
@@ -95,22 +97,21 @@ export const Navbar = () => {
         </div>
 
         {/* mobile nav */}
-
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="p-2 text-foreground z-60"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
         </button>
 
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
+            "fixed top-0 left-0 w-full h-screen bg-background/95 backdrop-blur-md z-50 flex flex-col items-center justify-center",
+            "transition-all duration-300 transform",
             isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+              ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"
           )}
         >
           <div className="flex flex-col space-y-8 text-xl">
@@ -125,7 +126,10 @@ export const Navbar = () => {
               </a>
             ))}
           </div>
+          {/* Theme Toggle */}
+          <ThemeToggle isNavbar={isMenuOpen} />
         </div>
+
       </div>
     </nav>
   );

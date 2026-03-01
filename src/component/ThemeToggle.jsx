@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { gsap } from 'gsap';
 
-export const ThemeToggle = () => {
+export const ThemeToggle = ({ isNavbar }) => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
     const [displayIcon, setDisplayIcon] = useState('sun'); // Track displayed icon
@@ -77,7 +77,7 @@ export const ThemeToggle = () => {
     };
 
     return (
-        <button onClick={toggleTheme} className={cn(`max-md:hidden w-13 h-7 flex items-center ${isDarkMode ? 'outline-white-900 bg-violet-600/80' : 'outline-blue-500 bg-blue-200'} fixed max-sm:hidden top-3 right-5 z-50 p-1 rounded-full transition-colors duration-300`
+        <button onClick={toggleTheme} className={cn(`${isNavbar ? 'mt-10 z-60' : 'max-md:hidden fixed top-3 right-5 z-50'} w-13 h-7 flex items-center ${isDarkMode ? 'outline-white-900 bg-violet-600/80' : 'outline-blue-500 bg-blue-200'} p-1 rounded-full transition-colors duration-300`
         )}>
             <div
                 ref={toggleRef}
