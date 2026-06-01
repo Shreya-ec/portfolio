@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
 import gsap from "gsap";
-import project1 from "../assets/project1.png";
-import project2 from "../assets/project2.png";
-import project3 from "../assets/project3.png";
+import project1 from "../assets/project1.webp";
+import project2 from "../assets/project2.webp";
+import project3 from "../assets/project3.webp";
 
 const projects = [
   {
