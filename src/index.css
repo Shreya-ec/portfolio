@@ -105,6 +105,7 @@
 
   html {
     @apply scroll-smooth;
+    overflow-x: clip;
     /* Hide scrollbar for Chrome, Safari and Opera */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
@@ -123,9 +124,14 @@
   }
 
   html:not(.dark) {
-    background: linear-gradient(180deg, #cfdef8 0%, #f8faff 100%);  
-    background-attachment: fixed;
+    background: linear-gradient(180deg, #cfdef8 0%, #f8faff 100%);
     min-height: 100%;
+  }
+
+  @media (width >= 768px) {
+    html:not(.dark) {
+      background-attachment: fixed;
+    }
   }
 
   body:not(.dark) {

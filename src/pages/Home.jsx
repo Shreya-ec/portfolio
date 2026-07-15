@@ -26,7 +26,7 @@ export const Home = () => {
     }, []);
 
     return (
-        <div className={`min-h-screen text-foreground overflow-x-hidden ${isDarkMode ? 'bg-background' : ''}`}>
+        <div className={`min-h-screen text-foreground ${isDarkMode ? 'bg-background' : ''}`}>
             {/* Background Effect */}
            {isDarkMode ? <StarBackground /> : <DayBackground />}
             {/* Navbar */}
