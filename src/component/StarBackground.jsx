@@ -84,7 +84,34 @@ export const StarBackground = () => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      className="night-sky fixed inset-0 overflow-hidden pointer-events-none z-0"
+      aria-hidden="true"
+    >
+      <div className="nebula nebula-violet" />
+      <div className="nebula nebula-blue" />
+      <div className="aurora aurora-one" />
+      <div className="aurora aurora-two" />
+
+      <div className="moon">
+        <span className="moon-crater moon-crater-one" />
+        <span className="moon-crater moon-crater-two" />
+        <span className="moon-crater moon-crater-three" />
+      </div>
+
+      <svg className="constellation constellation-one" viewBox="0 0 240 150">
+        <path d="M18 112 L72 54 L128 82 L184 25 L222 67" />
+        {[["18","112"],["72","54"],["128","82"],["184","25"],["222","67"]].map(([cx, cy]) => (
+          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="3" />
+        ))}
+      </svg>
+      <svg className="constellation constellation-two" viewBox="0 0 180 120">
+        <path d="M10 25 L55 58 L104 30 L142 91 L170 55" />
+        {[["10","25"],["55","58"],["104","30"],["142","91"],["170","55"]].map(([cx, cy]) => (
+          <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="2.5" />
+        ))}
+      </svg>
+
       {stars.map((star) => (
         <div
           key={star.id}

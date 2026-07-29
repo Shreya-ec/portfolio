@@ -11,7 +11,7 @@ const projects = [
     title: "Admin Dashboard",
     description: "An employee management system with authentication, advanced filtering, search optimization, and print-ready reporting.",
     image: project1,
-    tags: ["React", "javaScript", "TailwindCSS"],
+    tags: ["React", "JavaScript", "Tailwind CSS"],
     demoUrl: "https://employee-management-dashboard-snowy.vercel.app/",
     githubUrl: "https://github.com/Shreya-ec/employee-management-dashboard",
   },
@@ -21,7 +21,7 @@ const projects = [
     description:
       "A visual chatbot-flow editor for creating and editing chatbot flows.",
     image: project2,
-    tags: ["React", "React Flow", "javaScript"],
+    tags: ["React", "React Flow", "JavaScript"],
     demoUrl: "https://reactchatflo.netlify.app",
     githubUrl: "https://github.com/Shreya-ec/react-flo",
   },
@@ -31,7 +31,7 @@ const projects = [
     description:
       "A clean and responsive UI clone of the modern, animated, Awwward-winning website: TwoGoodCo.",
     image: project3,
-    tags: ["React", "javaScript", "GSAP"],
+    tags: ["React", "JavaScript", "GSAP"],
     demoUrl: "https://awarded-clone-twogood.netlify.app/",
     githubUrl: "https://github.com/Shreya-ec/twogood.co_Clone",
   },
@@ -114,8 +114,8 @@ export const ProjectsSection = () => {
           ref={descriptionRef}
           className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto"
         >
-          Here are some of my recent projects. Each project was carefully
-          crafted with attention to detail, performance, and user experience.
+          A selection of interfaces built with a product mindset—balancing
+          performance, maintainable code, and a polished user experience.
         </p>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-4 sm:p-3">
@@ -123,7 +123,7 @@ export const ProjectsSection = () => {
             <div
               key={key}
               ref={(el) => (cardsRef.current[key] = el)}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover cursor-pointer"
+              className="group relative bg-card rounded-xl overflow-hidden border border-border/70 shadow-sm card-hover cursor-pointer"
               onMouseEnter={(e) => {
                 gsap.to(e.currentTarget, {
                   y: -8,
@@ -157,7 +157,7 @@ export const ProjectsSection = () => {
                 />
               </div>
 
-              <div className="p-6 max-sm:p-3">
+              <div className="relative p-6 pb-14 max-sm:p-4 max-sm:pb-14">
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
@@ -169,10 +169,10 @@ export const ProjectsSection = () => {
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1 max-sm:mb-7 max-sm:text-lg group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-semibold mb-2 max-sm:text-lg group-hover:text-primary transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="max-sm:hidden text-muted-foreground text-sm mb-12">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {project.description}
                 </p>
                 <div className="flex space-x-3 absolute bottom-4 right-4">
@@ -181,6 +181,7 @@ export const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    aria-label={`View ${project.title} live`}
                   >
                     <ExternalLink size={20} />
                   </a>
@@ -189,6 +190,7 @@ export const ProjectsSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                    aria-label={`View ${project.title} source code`}
                   >
                     <Github size={20} />
                   </a>

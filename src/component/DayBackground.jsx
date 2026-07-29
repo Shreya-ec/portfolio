@@ -42,23 +42,50 @@ export const DayBackground = () => {
   };
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      className="day-sky fixed inset-0 overflow-hidden pointer-events-none z-0"
+      aria-hidden="true"
+    >
+      <div className="day-orb day-orb-left" />
+      <div className="day-orb day-orb-right" />
+
       <div ref={containerRef} className="absolute top-0 right-0 w-full h-full">
-        <div className="light-source"></div>
+        <div className="light-source">
+          <div className="sun-core" />
+          <div className="sun-ring sun-ring-one" />
+          <div className="sun-ring sun-ring-two" />
+        </div>
 
         {rays.map((ray) => (
           <div
             key={ray.id}
-            className="light-ray"
+            className="light-ray-origin"
             style={{
-              height: ray.length + "vh",
-              width: ray.spread + "vw",
               transform: `rotate(${ray.angle}deg)`,
-              opacity: ray.opacity
             }}
-          />
+          >
+            <div
+              className="light-ray"
+              style={{
+                height: ray.length + "vh",
+                width: ray.spread + "vw",
+                opacity: ray.opacity,
+              }}
+            />
+          </div>
         ))}
       </div>
+
+      <div className="cloud cloud-one">
+        <span /><span /><span />
+      </div>
+      <div className="cloud cloud-two">
+        <span /><span /><span />
+      </div>
+      <div className="cloud cloud-three">
+        <span /><span /><span />
+      </div>
+      <div className="day-haze" />
     </div>
   );
 };

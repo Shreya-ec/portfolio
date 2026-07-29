@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight, Code2 } from "lucide-react";
 import gsap from "gsap";
 
 export const HeroSection = () => {
@@ -93,6 +93,10 @@ export const HeroSection = () => {
     >
       <div className="container max-w-4xl mx-auto text-center z-10">
         <div className="space-y-6">
+          <div className="opacity-0 animate-fade-in inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-sm font-medium text-primary backdrop-blur-sm">
+            <Code2 className="h-4 w-4" />
+            MERN Developer · Frontend Specialist
+          </div>
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
             <span className="opacity-0 animate-fade-in heading"> Hi, I'm</span>
             <span className="text-primary opacity-0 animate-fade-in-delay-1 heading">
@@ -105,14 +109,23 @@ export const HeroSection = () => {
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-          I build high-performance React applications with production-grade UI and <br/> thoughtful motion.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-3 leading-relaxed">
+            I build polished, high-performance React interfaces and scalable
+            full-stack products with MongoDB, Express, React, and Node.js.
           </p>
-          <em className="block my-2 text-lg md:text-xl text-gray-500 max-2-2xl mx-auto opacity-0 animate-fade-in-delay-4">- "Build it fast. Make it smart. Keep it beautiful."</em>
+          <em className="block my-2 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4">
+            “Build it fast. Make it smart. Keep it beautiful.”
+          </em>
 
-          <div className="pt-5 opacity-0 animate-fade-in-delay-5">
-            <a href="#projects" className="cosmic-button">
-              View My Work
+          <div className="pt-5 opacity-0 animate-fade-in-delay-5 flex flex-wrap items-center justify-center gap-4">
+            <a href="#projects" className="cosmic-button inline-flex items-center gap-2">
+              View My Work <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#contact"
+              className="px-6 py-2 rounded-full border border-primary/40 text-foreground hover:bg-primary/10 hover:border-primary transition-all duration-300"
+            >
+              Let's Talk
             </a>
           </div>
         </div>

@@ -17,7 +17,9 @@ import {
   SiMui,
   SiRedux,
   SiVite,
-  
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
 } from "react-icons/si";
 import { IoMdCodeWorking } from "react-icons/io";
 
@@ -30,6 +32,12 @@ const skills = [
   { name: "Redux Toolkit", icon: SiRedux, category: "core" },
   { name: "Tailwind CSS", icon: SiTailwindcss, category: "core" },
   { name: "GSAP", icon: IoMdCodeWorking, category: "core" },
+
+  // Full-stack MERN
+  { name: "Node.js", icon: SiNodedotjs, category: "backend" },
+  { name: "Express", icon: SiExpress, category: "backend" },
+  { name: "MongoDB", icon: SiMongodb, category: "backend" },
+  { name: "REST APIs", icon: IoMdCodeWorking, category: "backend" },
 
   // Engineering & Workflow
   { name: "Git", icon: SiGit, category: "tools" },
@@ -47,7 +55,7 @@ const skills = [
 
 ];
 
-const categories = ["all", "core", "familiar", "tools"];
+const categories = ["all", "core", "backend", "tools", "familiar"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -170,7 +178,7 @@ export const SkillsSection = () => {
                 "px-5 py-2 rounded-full transition-all duration-300 capitalize cursor-pointer",
                 activeCategory === category
                   ? "bg-primary text-primary-foreground scale-105"
-                  : "bg-secondary/70 text-forefround hover:bg-secondary hover:scale-105"
+                  : "bg-secondary/70 text-foreground hover:bg-secondary hover:scale-105"
               )}
             >
               {category}

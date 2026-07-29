@@ -6,7 +6,7 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navItems = [
   { name: "About", href: "#about" },
-  { name: "Stack", href: "#skills" },
+  { name: "Stack", href: "#stack" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
@@ -84,7 +84,7 @@ export const Navbar = () => {
         </a>
 
         {/* desktop nav */}
-        <div className="hidden md:flex space-x-8 me-20 xxl:me-0">
+        <div className="hidden md:flex items-center space-x-8 ml-auto mr-6">
           {navItems.map((item, key) => (
             <a
               key={key}
@@ -96,10 +96,14 @@ export const Navbar = () => {
           ))}
         </div>
 
+        <div className="hidden md:block">
+          <ThemeToggle />
+        </div>
+
         {/* mobile nav */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="p-2 text-foreground z-60"
+          className="p-2 text-foreground z-60 md:hidden"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
           aria-expanded={isMenuOpen}
         >

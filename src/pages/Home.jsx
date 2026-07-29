@@ -15,14 +15,18 @@ export const Home = () => {
     });
 
     useEffect(() => {
-        const checkTheme = () => {
+        const syncTheme = () => {
             setIsDarkMode(document.documentElement.classList.contains('dark'));
         };
-        
-        checkTheme();
-        // Check periodically for theme changes
-        const interval = setInterval(checkTheme, 100);
-        return () => clearInterval(interval);
+
+        syncTheme();
+        const observer = new MutationObserver(syncTheme);
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     return (

@@ -77,7 +77,7 @@ export const ThemeToggle = ({ isNavbar }) => {
     };
 
     return (
-        <button onClick={toggleTheme} className={cn(`${isNavbar ? 'mt-10 z-60' : 'max-md:hidden fixed top-3 right-5 z-50'} w-13 h-7 flex items-center ${isDarkMode ? 'outline-white-900 bg-violet-600/80' : 'outline-blue-500 bg-blue-200'} p-1 rounded-full transition-colors duration-300`
+        <button onClick={toggleTheme} className={cn(`${isNavbar ? 'mt-10 z-60' : 'max-md:hidden fixed top-3 right-5 z-50'} w-13 h-7 flex items-center ${isDarkMode ? 'outline-white-900 bg-violet-600/80' : 'outline-blue-500 bg-blue-300'} p-1 rounded-full transition-colors duration-300`
         )}>
             <div
                 ref={toggleRef}

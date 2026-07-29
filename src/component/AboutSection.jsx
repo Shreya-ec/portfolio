@@ -1,27 +1,27 @@
 import { useEffect, useRef } from "react";
-import { Briefcase, Code, Smartphone, Sparkles, Download, Mail } from "lucide-react";
+import { Code, Database, Layers3, Sparkles, Download, Mail } from "lucide-react";
 import gsap from "gsap";
 
 const expertise = [
   {
     icon: Code,
-    title: "Web Development",
-    description: "Building responsive and performant web applications",
+    title: "Frontend Engineering",
+    description: "Responsive, accessible interfaces built for real users",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Development",
-    description: "Creating cross-platform mobile experiences",
+    icon: Layers3,
+    title: "Full-stack Products",
+    description: "End-to-end MERN applications from idea to deployment",
   },
   {
     icon: Sparkles,
-    title: "Clean UI",
-    description: "Designing intuitive and beautiful interfaces",
+    title: "UI & Motion",
+    description: "Thoughtful interaction design that makes products feel alive",
   },
   {
-    icon: Briefcase,
-    title: "Project Management",
-    description: "Leading projects from concept to deployment",
+    icon: Database,
+    title: "APIs & Data",
+    description: "Reliable REST APIs, authentication, and database workflows",
   },
 ];
 
@@ -124,14 +124,14 @@ export const AboutSection = () => {
               <p className="text-lg text-muted-foreground leading-relaxed">
                 With about <span className="text-primary font-semibold">2+ years</span> of experience in web development, I specialize
                 in creating responsive, accessible, and performant web
-                applications using modern technologies.
+                applications with a strong focus on frontend craft.
               </p>
 
               <p className="text-lg text-muted-foreground leading-relaxed">
                 I'm passionate about creating elegant solutions to complex
-                problems. I mostly work with <span className="text-primary font-semibold">React</span>, but I'm always experimenting, 
-                learning, and pushing my creative and technical limits. Right now, 
-                I'm exploring fullstack development and building products that are as smart as they are beautiful.
+                problems. I specialize in <span className="text-primary font-semibold">React</span> and use the complete MERN stack
+                to turn product ideas into reliable, production-ready experiences.
+                I care equally about clean code, smooth interactions, and measurable performance.
               </p>
             </div>
 
@@ -187,7 +187,7 @@ export const AboutSection = () => {
           </div>
 
           {/* Right Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 max-sm:hidden ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
             {expertise.map((item, index) => {
               const Icon = item.icon;
               return (
